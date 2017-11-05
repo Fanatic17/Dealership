@@ -25,28 +25,68 @@ namespace ServiceAPI
                 {
                     // Create database
                     context.Database.EnsureCreated();
-                    //Student s = new Student()
-                    //{
-                    //    Name = "giovanni",
-                    //    DateOfBirth = new DateTime(2012, 1, 1),
-                    //};
-                    //Customer s1 = new Customer()
-                    //{
-                    //    Name = "Niccolo",
-                    //    DateOfBirth = new DateTime(2012, 1, 1),
+                   
+                    Customer c1 = new Customer()
+                    {
+                        Name = "Niccolo",
+                        Surname="Consoli",
+                        DateOfBirth = new DateTime(1992, 1, 1),
 
-                    //};
-                    //Vehicle s2 = new Vehicle()
-                    //{
-                    //    Brand = "Ferrari",
-                    //    Model = "XX",
-                    //    Price = "10100",
-                    //};
-                    //context.Vehicles.Add(s2);
-                    //context.Customers.Add(s1);
-                    //context.Students.Add(s);
+                    };
+                    Customer c2 = new Customer() {
+                        Name = "Riccardo",
+                        Surname = "Andro",
+                        DateOfBirth = new DateTime(1992, 1, 1),
+                    };
+                    Customer c3 = new Customer()
+                    {
+                    Name = "Gianluca",
+                    Surname = "Aziella",
+                    DateOfBirth = new DateTime(1992, 1, 1),
+                    };
+                    Customer c4= new Customer()
+                    {
+                        Name = "Gigi",
+                        Surname = "Buffon",
+                        DateOfBirth = new DateTime(1987, 1, 1),
+                    };
 
-                    //context.SaveChanges();
+                
+                    Vehicle s2 = new Vehicle()
+                    {
+                        Brand = "Ferrari",
+                        Model = "Rossa",
+                        Price = "10000000",
+                    };
+                    Vehicle s3 = new Vehicle()
+                    {
+                        Brand = "Mercedez",
+                        Model = "XLK-9",
+                        Price = "50000",
+                    };
+                    Vehicle s4 = new Vehicle()
+                    {
+                        Brand = "BMW",
+                        Model = "Serie A",
+                        Price = "250000",
+                    };
+                    Vehicle s5 = new Vehicle()
+                    {
+                        Brand = "Opel",
+                        Model = "Meriva",
+                        Price = "90000",
+                    };
+
+
+                    context.Vehicles.Add(s2);
+                    context.Vehicles.Add(s3);
+                    context.Vehicles.Add(s4);
+                    context.Vehicles.Add(s5);
+                    context.Customers.Add(c1);
+                    context.Customers.Add(c2);
+                    context.Customers.Add(c3);
+                    context.Customers.Add(c4);
+                    context.SaveChanges();
 
                 }
                 return Ok("database created");
@@ -54,74 +94,7 @@ namespace ServiceAPI
         }
 
 
-        [HttpGet("students")]
-        public async Task<IActionResult> GetStudents()
-        {
-            try
-            {
-                await parallelism.WaitAsync();
-
-                using (var context = new StudentsDbContext())
-                {
-                    return Ok(context.Students.ToList());
-                }
-            }
-            finally
-            {
-                parallelism.Release();
-            }
-        }
-
-        [HttpGet("student")]
-        public async Task<IActionResult> GetStudent([FromQuery]int id)
-        {
-            using (var context = new StudentsDbContext())
-            {
-                return Ok(await context.Students.FirstOrDefaultAsync(x => x.Id == id));
-            }
-        }
-
-        [HttpPut("students")]
-        public async Task<IActionResult> CreateStudent([FromBody]Student student)
-        {
-            using (var context = new StudentsDbContext())
-            {
-                context.Students.Add(student);
-
-                await context.SaveChangesAsync();
-
-                return Ok();
-            }
-        }
-
-        [HttpPost("students")]
-        public async Task<IActionResult> UpdateStudent([FromBody]Student student)
-        {
-            using (var context = new StudentsDbContext())
-            {
-                context.Students.Update(student);
-                await context.SaveChangesAsync();
-                return Ok();
-            }
-        }   
-
-
-        [HttpDelete("students")]
-        public async Task<IActionResult> DeleteStudent([FromQuery]int id)
-        {
-            using (var context = new StudentsDbContext())
-            {
-                var student = await context.Students.FirstOrDefaultAsync(x => x.Id == id);
-                if (student != null)
-                {
-                    context.Students.Remove(student);
-                    await context.SaveChangesAsync();
-                }
-                return Ok();
-
-
-            }
-        }
+        
 
         /// <summary>
         /// //////////////////////////////////////////////////

@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
-import { StudentsComponent } from './components/students/students.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { VehiclesComponent } from './components/vehicles/vehicles.component';
 
@@ -16,7 +15,6 @@ import { VehiclesComponent } from './components/vehicles/vehicles.component';
         AppComponent,
         NavMenuComponent,
         HomeComponent,
-        StudentsComponent,
         VehiclesComponent,
         CustomersComponent
     ],
@@ -27,7 +25,6 @@ import { VehiclesComponent } from './components/vehicles/vehicles.component';
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'students', component: StudentsComponent },
             { path: 'vehicles', component: VehiclesComponent },
             { path: 'customers', component: CustomersComponent },
             { path: '**', redirectTo: 'home' }
