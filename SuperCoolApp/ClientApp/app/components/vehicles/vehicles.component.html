@@ -1,36 +1,80 @@
-<h1>Vehicles List <button (click)="addNewVehicle()"> + </button></h1>
+<div class="ciao">
+    <h1>Vehicle's Page</h1>
+    <p>
+      This page show the interactive actions between our database, implemented with MySql, and our SuperCoolApp who is called Pippo!
+      Go ahead and create new vehicles and let them show to you!
+
+    </p>
+
+</div>
+
+
+<h3>Vehicle's List<button (click)="addNewVehicle()"> + </button></h3>
 
 <p *ngIf="!vehicles"><em>Loading...</em></p>
 
-<div class="vehicle-home">
-    <div class="vehicles-list" *ngIf="vehicles">
-        <div *ngFor="let stud of vehicles"
-            [class.selected]="stud === selectedVehicle"
-            (click)="onSelect(stud)"
-             [hidden]="stud.deleted"
-             >
-            <span class="badge">{{stud.id || '-' }}</span> {{stud.brand}} <span>{{stud.hasChanges?'*':''}}</span><span class="badge" style="float: right;" (click)="delete(stud)">delete</span>
-        </div>
-    </div>
-    <div *ngIf="selectedVehicle" class="vehicle-detail">
-        <h2 *ngIf="selectedVehicle.id > 0">{{selectedVehicle.brand}} ({{selectedVehicle.id}})</h2>
-        <h2 *ngIf="!selectedVehicle.id">New Vehicle</h2>
-        <div>
-            <label>Brand: </label>
-            <input [(ngModel)]="selectedVehicle.brand" placeholder="brand" />
-        </div>
-        <div>
-            <label>Model: </label>
-            <input [(ngModel)]="selectedVehicle.model" placeholder="model" />
-        </div>
-        <div>
-            <label>Price: </label>
-            <input [(ngModel)]="selectedVehicle.price" placeholder="price" />
-        </div>
-       
-    </div>
-</div>
 
-<div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" (click)="saveChanges()">
-    <span>SAVE</span>
-</div>
+    <div class="vehicle-home">
+        <div class="vehicles-list" *ngIf="vehicles">
+            <div *ngFor="let stud of vehicles"
+                 [class.selected]="stud === selectedVehicle"
+                 (click)="onSelect(stud)"
+                 [hidden]="stud.deleted">
+                <span class="badge">{{stud.id || '-' }}</span> {{stud.brand}}<span> {{stud.model}} </span> <span>{{stud.hasChanges?'*':''}}</span><span class="badge" style="float: right;" (click)="delete(stud)">delete</span>
+            </div>
+        </div>
+        <div *ngIf="selectedVehicle" class="vehicle-detail">
+            <h2 *ngIf="selectedVehicle.id > 0">{{selectedVehicle.brand}} {{selectedVehicle.model}}  ({{selectedVehicle.id}})</h2>
+            <h2 *ngIf="!selectedVehicle.id">New Vehicle</h2>
+
+            <div>
+                <label>Brand: </label>
+                <input [(ngModel)]="selectedVehicle.brand" placeholder="brand" />
+            </div>
+            <div>
+                <label>Model: </label>
+                <input [(ngModel)]="selectedVehicle.model" placeholder="model" />
+            </div>
+            <div>
+                <label>Price: </label>
+                <input [(ngModel)]="selectedVehicle.price" placeholder="price" />
+            </div>
+
+        </div>
+    </div>
+
+
+    <p *ngIf="!vehicles">
+        <em>Loading vehicles...</em>
+    </p>
+
+    <h1>Show all vehicles in a table</h1>
+
+    <br />
+    <table class='table' *ngIf="vehicles">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Plate</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let vehicle of vehicles">
+                <td>{{ vehicle.id }}</td>
+                <td>{{ vehicle.brand }}</td>
+                <td>{{ vehicle.model }}</td>
+                <td>{{ vehicle.plate }}</td>
+                <td>{{ vehicle.price }}</td>
+            </tr>
+        </tbody>
+        <br>
+    </table>
+
+
+
+    <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" (click)="saveChanges()">
+        <span>SAVE</span>
+    </div>

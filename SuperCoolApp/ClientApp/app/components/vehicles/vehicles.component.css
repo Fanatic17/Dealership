@@ -8,7 +8,8 @@
 }
 
 .vehicles-list {
-    flex:1;
+    font-family: "Times New Roman", Times, serif;
+    flex: 1;
     padding: 5px;
 }
 
@@ -33,11 +34,53 @@
 }
 
 .vehicles-list .text {
+    font-family: "Times New Roman", Times, serif;
     position: relative;
     top: -3px;
 }
 
+.ciao{
+    margin: auto;
+    border: 1px solid gray;
+    padding: 8px;
+}
+
+h1,h3 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #4CAF50;
+}
+
+p {
+    text-indent: 50px;
+    text-align: justify;
+    letter-spacing: 3px;
+}
+
+
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+th {
+    background-color: #f9ad07;
+    color: white;
+}
+
 .vehicles-list .badge {
+    font-family: "Times New Roman", Times, serif;
     display: inline-block;
     font-size: small;
     color: white;
@@ -51,15 +94,16 @@
 }
 
 .vehicle-detail {
+    font-family: "Times New Roman", Times, serif;
     flex: 1;
-    padding: 5px;
+    padding: 10px;
 }
 
 button {
-    font-family: Arial;
+    font-family: "Times New Roman", Times, serif;
     font-size: 16px;
     margin: 2px;
-    background-color: #eee;
+    background-color: #f9ad07;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
@@ -73,7 +117,7 @@ button:hover {
 }
 
 button:disabled {
-    background-color: #eee;
+    background-color: #f9ad07;
     color: #aaa;
     cursor: auto;
 }
@@ -82,7 +126,7 @@ button:disabled {
     width: 55px;
     height: 55px;
     border-radius: 50%;
-    background: #db4437;
+    background: #f9ad07;
     position: fixed;
     bottom: 30px;
     right: 30px;

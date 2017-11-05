@@ -12,6 +12,43 @@
     padding: 5px;
 }
 
+.ciao {
+    margin: auto;
+    border: 1px solid gray;
+    padding: 8px;
+}
+
+h1, h3 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #4CAF50;
+}
+
+p {
+    text-indent: 50px;
+    text-align: justify;
+    letter-spacing: 3px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+th {
+    background-color: #f9ad07;
+    color: white;
+}
+
 .customers-list div {
     cursor: pointer;
     position: relative;
