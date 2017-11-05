@@ -13,6 +13,9 @@ Avviare XAMPP sul proprio computer ed avviare MySQL.
 ///Cliccare sul tasto "Play" (Avvia) ed eseguire il progetto. Si aprirà una finestra di Chrome in cui sarà presente un tasto da premere per configurare il database in modo corretto. Quando il database sarà creato comparirà il messaggio "database created".
 
 
+!ATTENZIONE! Se avviando il progetto si incontrano errori di compilazione bisogna andare sulla cartella del progetto sul proprio computer, aprire il prompt dei comandi di windows e digitare senza virgolette "npm install".
+
+
 Aprire un browser e digitare nella barra degli indirizzi: localhost:56000
 
 
