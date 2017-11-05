@@ -1,5 +1,5 @@
 <div class="ciao">
-    <h1>Vehicle's Page</h1>
+    <h1>Vehicles Page</h1>
     <p>
       This page show the interactive actions between our database, implemented with MySql, and our SuperCoolApp who is called Pippo!
       Go ahead and create new vehicles and let them show to you!
@@ -9,7 +9,7 @@
 </div>
 
 
-<h3>Vehicle's List<button (click)="addNewVehicle()"> + </button></h3>
+<h3>Vehicles List<button (click)="addNewVehicle()"> + </button></h3>
 
 <p *ngIf="!vehicles"><em>Loading...</em></p>
 
@@ -48,7 +48,7 @@
         <em>Loading vehicles...</em>
     </p>
 
-    <h1>Show all vehicles in a table</h1>
+    <h1>All vehicles</h1>
 
     <br />
     <table class='table' *ngIf="vehicles">
@@ -57,7 +57,6 @@
                 <th>Id</th>
                 <th>Brand</th>
                 <th>Model</th>
-                <th>Plate</th>
                 <th>Price</th>
             </tr>
         </thead>
@@ -66,7 +65,6 @@
                 <td>{{ vehicle.id }}</td>
                 <td>{{ vehicle.brand }}</td>
                 <td>{{ vehicle.model }}</td>
-                <td>{{ vehicle.plate }}</td>
                 <td>{{ vehicle.price }}</td>
             </tr>
         </tbody>
@@ -76,5 +74,5 @@
 
 
     <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" (click)="saveChanges()">
-        <span>SAVE</span>
+        <span>Confirm</span>
     </div>

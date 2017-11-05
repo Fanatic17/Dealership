@@ -12,7 +12,7 @@
     padding: 5px;
 }
 
-.ciao {
+.Head {
     margin: auto;
     border: 1px solid gray;
     padding: 8px;
@@ -21,7 +21,7 @@
 h1, h3 {
     text-align: center;
     text-transform: uppercase;
-    color: #4CAF50;
+    color: #4280f4;
 }
 
 p {

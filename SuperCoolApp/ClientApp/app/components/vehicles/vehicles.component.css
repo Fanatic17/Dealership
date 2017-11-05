@@ -1,5 +1,5 @@
 ﻿.selected {
-    background-color: #CFD8DC !important;
+    background-color: #333333 !important;
     color: white;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .vehicles-list div.selected:hover {
-    background-color: #BBD8DC !important;
+    background-color: #000000 !important;
     color: white;
 }
 
@@ -48,7 +48,7 @@
 h1,h3 {
     text-align: center;
     text-transform: uppercase;
-    color: #4CAF50;
+    color: #4280f4;
 }
 
 p {
@@ -85,7 +85,7 @@ th {
     font-size: small;
     color: white;
     padding: 0.8em 0.7em 0 0.7em;
-    background-color: #607D8B;
+    background-color: #ffd389;
     line-height: 1em;
     position: relative;
     height: 30px;
@@ -117,19 +117,19 @@ button:hover {
 }
 
 button:disabled {
-    background-color: #f9ad07;
+    background-color: #eee;
     color: #aaa;
     cursor: auto;
 }
 
 #floating-button {
-    width: 55px;
-    height: 55px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     background: #f9ad07;
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 35px;
+    right: 35px;
     cursor: pointer;
     box-shadow: 0px 2px 5px #666;
     display: flex;

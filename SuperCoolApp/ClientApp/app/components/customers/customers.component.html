@@ -1,6 +1,6 @@
 
-<div class="ciao">
-    <h1>Customer's Page</h1>
+<div class="Head">
+    <h1>Customers Page</h1>
     <p>
         This page show the interactive actions between our database, implemented with MySql, and our SuperCoolApp who is called Pippo!
         Go ahead and create new customers and let them show to you!
@@ -30,17 +30,21 @@
         <h2 *ngIf="!selectedCustomer.id">New Customer</h2>
         <div>
             <label>Name: </label>
-            <input [(ngModel)]="selectedCustomer.name" placeholder="name" />
+            <input [(ngModel)]="selectedCustomer.name" placeholder="Name" />
+        </div>
+        <div>
+            <label>Surname: </label>
+            <input [(ngModel)]="selectedCustomer.surname" placeholder="Surname" />
         </div>
         <div>
             <label>Date Of Birth: </label>
-            <input [(ngModel)]="selectedCustomer.dateOfBirth" placeholder="birth" />
+            <input [(ngModel)]="selectedCustomer.dateOfBirth" placeholder="01/01/1990" />
         </div>
     </div>
 </div>
 
 
-<h1>Show all vehicles in a table</h1>
+<h1>All customers</h1>
 
 <br />
 <table class='table' *ngIf="customers">
