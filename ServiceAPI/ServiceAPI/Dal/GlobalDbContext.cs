@@ -6,13 +6,12 @@ namespace ServiceAPI.Dal
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
-        public DbSet<Student> Students { get; set; }
 
         protected override void
             OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder
                 //.UseMySql(@"Server=localhost;database=corso;uid=corso;pwd=unict;");
-                .UseMySql(@"Server=localhost;database=corso;uid=root;");
+                .UseMySql(@"Server=localhost;database=aquinoconsoli;uid=root;");
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
