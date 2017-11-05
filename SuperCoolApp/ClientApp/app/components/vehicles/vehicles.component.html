@@ -1,0 +1,31 @@
+<h1>Vehicles List <button (click)="addNewVehicle()"> + </button></h1>
+
+<p *ngIf="!vehicles"><em>Loading...</em></p>
+
+<div class="vehicle-home">
+    <div class="vehicles-list" *ngIf="vehicles">
+        <div *ngFor="let stud of vehicles"
+            [class.selected]="stud === selectedVehicle"
+            (click)="onSelect(stud)"
+             [hidden]="stud.deleted"
+             >
+            <span class="badge">{{stud.id || '-' }}</span> {{stud.name}} <span>{{stud.hasChanges?'*':''}}</span><span class="badge" style="float: right;" (click)="delete(stud)">delete</span>
+        </div>
+    </div>
+    <div *ngIf="selectedVehicle" class="vehicle-detail">
+        <h2 *ngIf="selectedVehicle.id > 0">{{selectedVehicle.name}} ({{selectedVehicle.id}})</h2>
+        <h2 *ngIf="!selectedVehicle.id">New Vehicle</h2>
+        <div>
+            <label>Name: </label>
+            <input [(ngModel)]="selectedVehicle.name" placeholder="name" />
+        </div>
+        <div>
+            <label>Date Of Birth: </label>
+            <input [(ngModel)]="selectedVehicle.dateOfBirth" placeholder="birth" />
+        </div>
+    </div>
+</div>
+
+<div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" (click)="saveChanges()">
+    <span>SAVE</span>
+</div>

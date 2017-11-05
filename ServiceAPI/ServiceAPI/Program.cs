@@ -18,25 +18,19 @@ namespace ServiceAPI
             Task restService = host.RunAsync();
 
 
-            //using (var context = new StudentsDbContext())
+            //using (var context = new GlobalDbContext())
             //{
-            //    // Create database
+            //    // create database
             //    context.Database.EnsureCreated();
 
-            //    Student s = new Student()
-            //    {
-            //        Name = "Giovanni",
-            //        DateOfBirth = new DateTime(2012, 1, 1),
-            //    };
-
-            //    context.Students.Add(s);
-
-            //    context.SaveChanges();
+             
             //}
+
+            
 
 
             //System.Diagnostics.Process.Start("chrome.exe", "http://localhost/netcoreapp2.0/corsoing/");
-            //System.Diagnostics.Process.Start("cmd", "/C start http://localhost/netcoreapp2.0/corsoing/");
+            System.Diagnostics.Process.Start("cmd", "/C start http://localhost/netcoreapp2.0/corsoing/");
             restService.Wait();
         }
     }

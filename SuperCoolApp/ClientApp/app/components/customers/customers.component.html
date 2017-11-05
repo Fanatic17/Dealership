@@ -1,0 +1,31 @@
+<h1>Customers List <button (click)="addNewCustomer()"> + </button></h1>
+
+<p *ngIf="!customers"><em>Loading...</em></p>
+
+<div class="customer-home">
+    <div class="customers-list" *ngIf="customers">
+        <div *ngFor="let stud of customers"
+            [class.selected]="stud === selectedCustomer"
+            (click)="onSelect(stud)"
+             [hidden]="stud.deleted"
+             >
+            <span class="badge">{{stud.id || '-' }}</span> {{stud.name}} <span>{{stud.hasChanges?'*':''}}</span><span class="badge" style="float: right;" (click)="delete(stud)">delete</span>
+        </div>
+    </div>
+    <div *ngIf="selectedCustomer" class="customer-detail">
+        <h2 *ngIf="selectedCustomer.id > 0">{{selectedCustomer.name}} ({{selectedCustomer.id}})</h2>
+        <h2 *ngIf="!selectedCustomer.id">New Customer</h2>
+        <div>
+            <label>Name: </label>
+            <input [(ngModel)]="selectedCustomer.name" placeholder="name" />
+        </div>
+        <div>
+            <label>Date Of Birth: </label>
+            <input [(ngModel)]="selectedCustomer.dateOfBirth" placeholder="birth" />
+        </div>
+    </div>
+</div>
+
+<div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" (click)="saveChanges()">
+    <span>SAVE</span>
+</div>

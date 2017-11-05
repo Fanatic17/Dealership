@@ -21,10 +21,34 @@ namespace ServiceAPI
         {
             lock (setupLock)
             {
-                using (var context = new StudentsDbContext())
+                using (var context = new GlobalDbContext())
                 {
                     // Create database
                     context.Database.EnsureCreated();
+                    Student s = new Student()
+                    {
+                        Name = "giovanni",
+                        DateOfBirth = new DateTime(2012, 1, 1),
+                    };
+                    Customer s1 = new Customer()
+                    {
+                        Name = "Niccolo",
+                        DateOfBirth = new DateTime(2012, 1, 1),
+
+                    };
+                    Vehicle s2 = new Vehicle()
+                    {
+                        Brand = "Ferrari",
+                        Model = "XX",
+                        Price = "10100",
+
+                    };
+                    context.Vehicles.Add(s2);
+                    context.Customers.Add(s1);
+                    context.Students.Add(s);
+
+                    context.SaveChanges();
+
                 }
                 return Ok("database created");
             }
@@ -99,5 +123,162 @@ namespace ServiceAPI
 
             }
         }
+
+        /// <summary>
+        /// //////////////////////////////////////////////////
+        /// </summary>
+        /// <returns></returns>
+
+        [HttpGet("customers")]
+        public async Task<IActionResult> GetCustomers()
+        {
+            try
+            {
+                await parallelism.WaitAsync();
+
+                using (var context = new GlobalDbContext())
+                {
+                    return Ok(context.Customers.ToList());
+                }
+            }
+            finally
+            {
+                parallelism.Release();
+            }
+        }
+
+        [HttpGet("customer")]
+        public async Task<IActionResult> GetCustomer([FromQuery]int id)
+        {
+            using (var context = new GlobalDbContext())
+            {
+                return Ok(await context.Customers.FirstOrDefaultAsync(x => x.Id == id));
+            }
+        }
+
+        [HttpPut("customers")]
+        public async Task<IActionResult> CreateCustomer([FromBody]Customer customer)
+        {
+            using (var context = new GlobalDbContext())
+            {
+                context.Customers.Add(customer);
+
+                await context.SaveChangesAsync();
+
+                return Ok();
+            }
+        }
+
+        [HttpPost("customers")]
+        public async Task<IActionResult> UpdateCustomer([FromBody]Customer customer)
+        {
+            using (var context = new GlobalDbContext())
+            {
+                context.Customers.Update(customer);
+                await context.SaveChangesAsync();
+                return Ok();
+            }
+        }
+
+
+        [HttpDelete("customers")]
+        public async Task<IActionResult> DeleteCustomer([FromQuery]int id)
+        {
+            using (var context = new GlobalDbContext())
+            {
+                var customer = await context.Customers.FirstOrDefaultAsync(x => x.Id == id);
+                if (customer != null)
+                {
+                    context.Customers.Remove(customer);
+                    await context.SaveChangesAsync();
+                }
+                return Ok();
+
+
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// </summary>
+        /// <returns></returns>
+
+
+        [HttpGet("vehicles")]
+        public async Task<IActionResult> GetVehicles()
+        {
+            try
+            {
+                await parallelism.WaitAsync();
+
+                using (var context = new GlobalDbContext())
+                {
+                    return Ok(context.Vehicles.ToList());
+                }
+            }
+            finally
+            {
+                parallelism.Release();
+            }
+        }
+
+        [HttpGet("vehicle")]
+        public async Task<IActionResult> GetVehicle([FromQuery]int id)
+        {
+            using (var context = new GlobalDbContext())
+            {
+                return Ok(await context.Vehicles.FirstOrDefaultAsync(x => x.Id == id));
+            }
+        }
+
+        [HttpPut("vehicles")]
+        public async Task<IActionResult> CreateVehicle([FromBody]Vehicle vehicle)
+        {
+            using (var context = new GlobalDbContext())
+            {
+                context.Vehicles.Add(vehicle);
+
+                await context.SaveChangesAsync();
+
+                return Ok();
+            }
+        }
+
+        [HttpPost("vehicles")]
+        public async Task<IActionResult> UpdateVehicle([FromBody]Vehicle vehicle)
+        {
+            using (var context = new GlobalDbContext())
+            {
+                context.Vehicles.Update(vehicle);
+                await context.SaveChangesAsync();
+                return Ok();
+            }
+        }
+
+
+        [HttpDelete("vehicles")]
+        public async Task<IActionResult> DeleteVehicle([FromQuery]int id)
+        {
+            using (var context = new GlobalDbContext())
+            {
+                var vehicle = await context.Vehicles.FirstOrDefaultAsync(x => x.Id == id);
+                if (vehicle != null)
+                {
+                    context.Vehicles.Remove(vehicle);
+                    await context.SaveChangesAsync();
+                }
+                return Ok();
+
+
+            }
+        }
+
     }
 }
