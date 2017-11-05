@@ -24,8 +24,9 @@ export class VehiclesComponent {
 
                 let vehicle = new Vehicle();
                 vehicle.id = stud.id;
-                vehicle.name = stud.name;
-                vehicle.dateOfBirth = stud.dateOfBirth;
+                vehicle.brand = stud.brand;
+                vehicle.model = stud.model;
+                vehicle.price = stud.price;
                 vehicle.hasChanges = false;
                 vehicleList.push(vehicle);
             }
@@ -119,34 +120,50 @@ export class VehiclesComponent {
 class Vehicle {
     id: number;
 
-    private _name: string = "";
-    private _dateOfBirth: Date;
+    private _brand: string = "";
+    private _model: string = "";
+    private _price: string = "";
     public hasChanges: boolean;
     public deleted: boolean = false;
 
-    get name(): string {
-        return this._name;
+
+    //BRAND
+    get brand(): string {
+        return this._brand;
     }
-    set name(n: string) {
-        this._name = n;
+    set brand(n: string) {
+        this._brand = n;
         this.hasChanges = true;
-        console.log("set name");
+        console.log("set brand");
     }
 
-    get dateOfBirth(): Date {
-        return this._dateOfBirth;
+    //MODEL
+    get model(): string {
+        return this._model;
     }
-    set dateOfBirth(d: Date) {
-        this._dateOfBirth = d;
+    set model(n: string) {
+        this._model = n;
         this.hasChanges = true;
-        console.log("set dateOfBirth");
+        console.log("set model");
     }
+
+    //PRICE
+    get price(): string {
+        return this._price;
+    }
+    set price(n: string) {
+        this._price = n;
+        this.hasChanges = true;
+        console.log("set price");
+    }
+
 
     public toJSON() {
         return {
             id: this.id,
-            name: this._name,
-            dateOfBirth: this._dateOfBirth,
+            brand: this._brand,
+            model: this._model,
+            price: this._price,
         };
     };
 }

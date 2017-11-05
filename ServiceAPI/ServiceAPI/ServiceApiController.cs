@@ -25,29 +25,28 @@ namespace ServiceAPI
                 {
                     // Create database
                     context.Database.EnsureCreated();
-                    Student s = new Student()
-                    {
-                        Name = "giovanni",
-                        DateOfBirth = new DateTime(2012, 1, 1),
-                    };
-                    Customer s1 = new Customer()
-                    {
-                        Name = "Niccolo",
-                        DateOfBirth = new DateTime(2012, 1, 1),
+                    //Student s = new Student()
+                    //{
+                    //    Name = "giovanni",
+                    //    DateOfBirth = new DateTime(2012, 1, 1),
+                    //};
+                    //Customer s1 = new Customer()
+                    //{
+                    //    Name = "Niccolo",
+                    //    DateOfBirth = new DateTime(2012, 1, 1),
 
-                    };
-                    Vehicle s2 = new Vehicle()
-                    {
-                        Brand = "Ferrari",
-                        Model = "XX",
-                        Price = "10100",
+                    //};
+                    //Vehicle s2 = new Vehicle()
+                    //{
+                    //    Brand = "Ferrari",
+                    //    Model = "XX",
+                    //    Price = "10100",
+                    //};
+                    //context.Vehicles.Add(s2);
+                    //context.Customers.Add(s1);
+                    //context.Students.Add(s);
 
-                    };
-                    context.Vehicles.Add(s2);
-                    context.Customers.Add(s1);
-                    context.Students.Add(s);
-
-                    context.SaveChanges();
+                    //context.SaveChanges();
 
                 }
                 return Ok("database created");
