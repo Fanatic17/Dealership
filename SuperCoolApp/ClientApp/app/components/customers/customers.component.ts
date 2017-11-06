@@ -25,6 +25,7 @@ export class CustomersComponent {
                 let customer = new Customer();
                 customer.id = stud.id;
                 customer.name = stud.name;
+                customer.surname = stud.surname;
                 customer.dateOfBirth = stud.dateOfBirth;
                 customer.hasChanges = false;
                 customerList.push(customer);
@@ -120,12 +121,21 @@ class Customer {
     id: number;
 
     private _name: string = "";
+    private _surname: string = "";
     private _dateOfBirth: Date;
     public hasChanges: boolean;
     public deleted: boolean = false;
 
     get name(): string {
         return this._name;
+    }
+    get surname(): string {
+        return this._surname;
+    }
+    set surname(n: string) {
+        this._surname = n;
+        this.hasChanges = true;
+        console.log("Set Surname");
     }
     set name(n: string) {
         this._name = n;
@@ -146,6 +156,7 @@ class Customer {
         return {
             id: this.id,
             name: this._name,
+            surname: this._surname,
             dateOfBirth: this._dateOfBirth,
         };
     };
